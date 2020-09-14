@@ -39,7 +39,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<h2>HTML Forms Add</h2>
+<h2>Add Student Form</h2>
 
 
   <label for="fname">First name:</label><br>
