@@ -37,26 +37,56 @@
   
     </script>
   </head>
-  <body>
-  <!-- <a href="/studentAdd">Add</a> -->
-  <h2>Student Module</h2>
-  <button id="addData">Add</button>
-  <table>
-  
-  <thead>
-  <tr>
-  <th>id</th>
-   <th>fname</th>
-    <th>lname</th>
-     <th>email</th>
-     <th>Update</th>
-     <th>Delete</th>
-  </tr>
-  </thead>
-  <tbody></tbody>
-         
-  </table>
-   <script type="text/javascript">
+  <style>
+	table.minimalistBlack {
+		border: 2px solid #000000;
+		text-align: left;
+		border-collapse: collapse;
+	}
+	
+	table.minimalistBlack td, table.minimalistBlack th {
+		border: 1px solid #000000;
+		padding: 5px 4px;
+	}
+	
+	table.minimalistBlack thead {
+		background: #CFCBA0;
+		background: -moz-linear-gradient(top, #dbd8b8 0%, #d3d0a9 66%, #CFCBA0 100%);
+		background: -webkit-linear-gradient(top, #dbd8b8 0%, #d3d0a9 66%, #CFCBA0 100%);
+		background: linear-gradient(to bottom, #dbd8b8 0%, #d3d0a9 66%, #CFCBA0 100%);
+		border-bottom: 1px solid #000000;
+	}
+	
+	table.minimalistBlack thead th {
+		font-size: 15px;
+		font-weight: bold;
+		color: #000000;
+		text-align: left;
+	}
+	
+	table.minimalistBlack tfoot td {
+		font-size: 14px;
+	}
+</style>
+<body>
+	<h2>Student Module</h2>
+	<button id="addData">Add</button>
+	<br><br>
+
+	<table class="minimalistBlack">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+	<script type="text/javascript">
 	function update(id) {
 		window.location.href = "http://localhost:8080/studentUpdate/" + id;
 	}
@@ -94,5 +124,5 @@
 		
 	   });
    </script>
-  </body>
+</body>
 </html>
