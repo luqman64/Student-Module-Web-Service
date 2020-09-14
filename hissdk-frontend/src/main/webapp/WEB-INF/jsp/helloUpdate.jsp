@@ -48,7 +48,7 @@
 </head>
  
 <body>
-<h2>HTML Forms Update</h2>
+<h2>Update Student Form</h2>
 	<form id="myform">
 		<label for='fname'>First Name:</label><br>
 		<input type='text' class='fn' id='firstName'><br>
