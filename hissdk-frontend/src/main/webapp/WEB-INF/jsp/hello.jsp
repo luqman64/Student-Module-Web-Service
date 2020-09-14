@@ -20,7 +20,6 @@
                 item.push("<td id=''"+key+"''>"+val.firstName+"</td>");
                 item.push("<td id=''"+key+"''>"+val.lastName+"</td>");
                 item.push("<td id=''"+key+"''>"+val.emailId+"</td>");
-                //item.push("<td><a href='studentUpdate/"+val.id+"'>Update</a></td>");  
                 item.push("<td><button class=\'upd\' onclick=\"update(" + val.id + ")\">Update</button></td>");  
                 item.push("<td><button class=\'delete\' id=' "+val.id+" '>Delete</button></td>");
                
