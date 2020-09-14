@@ -8,34 +8,43 @@
 
 <title>Add</title>
 <script>
-$(document).ready(function(){
-	var firstName =$("#firstName");
-	var lastName =$("#lastName");
-	var emailId= $("#emailId");
-  $("#addData").click(function(){
-	  
-    alert(firstName.val()+" "+lastName.val());
-    alert(emailId.val());
 
-    var studentAdd ={
-    		firstName : firstName.val(),
-            lastName  : lastName.val(),
-            emailId   : emailId.val(),
-    	    };
-    $.ajax({
-        type :'POST',
-        url: "http://localhost:8081/api/backend/students",
-        dataType: "json",
-        contentType: 'application/json; charset=utf-8',
-       data: JSON.stringify(studentAdd),
-        
-        succcess: function(){
-            }
-        });
-    console.log(JSON.stringify(studentAdd));
-   
-  });
-});
+	$(document).ready(function() {
+		var firstName = $("#firstName");
+		var lastName = $("#lastName");
+		var emailId = $("#emailId");
+
+		$("#addData").click(function() {
+
+			var studentAdd = {
+				firstName : firstName.val(),
+				lastName : lastName.val(),
+				emailId : emailId.val(),
+			};
+
+			if (studentAdd && studentAdd.firstName.length > 0 && studentAdd.lastName.length > 0
+					&& studentAdd.emailId.length > 0) {
+				if ("Submit form?") {
+					$.ajax({
+						type : 'POST',
+						url : "http://localhost:8081/api/backend/students",
+						dataType : "json",
+						contentType : 'application/json; charset=utf-8',
+						data : JSON.stringify(studentAdd),
+
+						succcess : function() {
+						}
+					});
+					console.log(JSON.stringify(studentAdd));
+				}
+			} else {
+				alert("Fields cannot be empty")
+			}
+				
+			
+
+		});
+	});
 </script>
 </head>
 <body>
