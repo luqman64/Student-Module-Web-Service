@@ -24,7 +24,7 @@
 
 			if (studentAdd && studentAdd.firstName.length > 0 && studentAdd.lastName.length > 0
 					&& studentAdd.emailId.length > 0) {
-				if ("Submit form?") {
+				if (confirm("Submit form?")) {
 					$.ajax({
 						type : 'POST',
 						url : "http://localhost:8081/api/backend/students",
@@ -36,12 +36,11 @@
 						}
 					});
 					console.log(JSON.stringify(studentAdd));
+					document.location.replace('http://localhost:8080/');
 				}
 			} else {
 				alert("Fields cannot be empty")
 			}
-				
-			
 
 		});
 	});
