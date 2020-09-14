@@ -20,7 +20,7 @@
                 item.push("<td id=''"+key+"''>"+val.firstName+"</td>");
                 item.push("<td id=''"+key+"''>"+val.lastName+"</td>");
                 item.push("<td id=''"+key+"''>"+val.emailId+"</td>");
-                item.push("<td><a href='studentUpdate/"+val.id+"'>Update</a></td>");              
+                item.push("<td><a href='studentUpdate/"+val.id+"'>Update</a></td>");  
                 item.push("<td><button class=\'delete\' id=' "+val.id+" '>Delete</button></td>");
                
                 item.push("</tr>");
@@ -37,7 +37,9 @@
     </script>
   </head>
   <body>
-  <a href="/studentAdd">Add</a>
+  <!-- <a href="/studentAdd">Add</a> -->
+  <h2>Student Module</h2>
+  <button id="addData">Add</button>
   <table>
   
   <thead>
@@ -57,7 +59,7 @@
    $(document).ready(function() {
 	   $(document).delegate('.delete', 'click', function() { 
 		   var id = $(this).attr('id');
-			if (confirm('Do you really want to delete record?'+id)) {
+			if (confirm('Do you really want to delete record '+id + '?')) {
 				
 				var parent = $(this).parent().parent();
 				$.ajax({
@@ -78,6 +80,13 @@
 				});
 			}
 		});
+
+	   $("#addData").click(function(e) {
+			e.preventDefault();
+			window.location.replace('http://localhost:8080/studentAdd');
+	   });
+
+		
 	   });
    </script>
   </body>

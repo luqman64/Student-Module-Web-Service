@@ -36,12 +36,16 @@
 						}
 					});
 					console.log(JSON.stringify(studentAdd));
-					document.location.replace('http://localhost:8080/');
+					window.location.replace('http://localhost:8080/');
 				}
 			} else {
 				alert("Fields cannot be empty")
 			}
 
+		});
+
+		$("#backBtn").click(function() {
+			window.location.replace('http://localhost:8080/');
 		});
 	});
 </script>
@@ -53,10 +57,11 @@
   <label for="fname">First name:</label><br>
   <input type="text" id="firstName" name="fname"  ><br>
   <label for="lname">Last name:</label><br>
-  <input type="text" id="lastName" name="lname" ><br><br>
-  <label for="email">email:</label><br>
+  <input type="text" id="lastName" name="lname" ><br>
+  <label for="email">Email:</label><br>
   <input type="text" id="emailId"  name="email" ><br><br>
   <button id="addData">Add</button>
+  <button id="backBtn">Back</button>
 
 <script>
 

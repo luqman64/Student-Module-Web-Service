@@ -57,54 +57,56 @@
 		<label for='email'>Email:</label><br>
 		<input type='text' class='em' id='email'><br><br>
 		<input type='submit' class='submit-button' value='Submit'> 
+		<button id="backBtn">Back</button>
 		<input type='hidden' id='id'>
 	</form>
 
 <div></div>
 <script>
 		
-	$(document).ready(function(){
-		
-		$('#myform').submit(function(e){
-		
+	
+	$(document).ready(function() {
+
+		$('#myform').submit(function(e) {
+
 			var firstName = $("#firstName");
-			var lastName  = $("#lastName");
-			var emailId	  = $("#email");
-			
-			var studentUpdate ={
-		    		firstName : firstName.val(),
-		            lastName  : lastName.val(),
-		            emailId   : emailId.val(),
-		    	    };
-		    
+			var lastName = $("#lastName");
+			var emailId = $("#email");
+
+			var studentUpdate = {
+				firstName : firstName.val(),
+				lastName : lastName.val(),
+				emailId : emailId.val(),
+			};
+
 			e.preventDefault();
-			
+
 			$.ajax({
-				url		: "http://localhost:8081/api/backend/students/"+ id +"",
-				type	: "PUT",
+				url : "http://localhost:8081/api/backend/students/" + id + "",
+				type : "PUT",
 				dataType : "json",
 				contentType : 'application/json; charset=utf-8',
-				data: JSON.stringify(studentUpdate),
-				success	: function(result){
-					
-					
-					console.log("test",result);
-					
+				data : JSON.stringify(studentUpdate),
+				success : function(result) {
+
+					console.log("test", result);
+
 					$("#firstName").val(result.firstName);
-            		$("#lastName").val(result.lastName);
-            		$("#email").val(result.emailId);
-					
+					$("#lastName").val(result.lastName);
+					$("#email").val(result.emailId);
+
 				}
 			});
 			console.log(JSON.stringify(studentUpdate));
 			document.location.replace('http://localhost:8080/');
 		});
-		
-		
-		
+
+		$("#backBtn").click(function(e) {
+			e.preventDefault();
+			window.location.replace('http://localhost:8080/');
 		});
-	
-		
+
+	});
 </script>
 </body>
 </html>
