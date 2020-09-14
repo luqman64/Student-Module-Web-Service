@@ -18,7 +18,7 @@
 		console.log(id);
 		
 		jQuery.ajax({
-					url : "http://localhost:8080/frontend/student/"+id+"",
+					url : "http://localhost:8081/api/backend/students/"+id+"",
 					type : "GET",
 					dataType : "json",
 					contentType : 'application/json; charset=utf-8',
@@ -81,24 +81,31 @@
 
 			e.preventDefault();
 
-			$.ajax({
-				url : "http://localhost:8081/api/backend/students/" + id + "",
-				type : "PUT",
-				dataType : "json",
-				contentType : 'application/json; charset=utf-8',
-				data : JSON.stringify(studentUpdate),
-				success : function(result) {
+			if (studentUpdate && studentUpdate.firstName.length > 0 && studentUpdate.lastName.length > 0 
+				 && studentUpdate.emailId.length > 0) {
+				$.ajax({
+					url : "http://localhost:8081/api/backend/students/" + id + "",
+					type : "PUT",
+					dataType : "json",
+					contentType : 'application/json; charset=utf-8',
+					data : JSON.stringify(studentUpdate),
+					success : function(result) {
 
-					console.log("test", result);
+						console.log("test", result);
 
-					$("#firstName").val(result.firstName);
-					$("#lastName").val(result.lastName);
-					$("#email").val(result.emailId);
+						$("#firstName").val(result.firstName);
+						$("#lastName").val(result.lastName);
+						$("#email").val(result.emailId);
 
-				}
-			});
-			console.log(JSON.stringify(studentUpdate));
-			document.location.replace('http://localhost:8080/');
+					}
+				});
+				console.log(JSON.stringify(studentUpdate));
+				document.location.replace('http://localhost:8080/');
+			} else {
+				alert("Fields cannot be empty");
+			}
+
+			
 		});
 
 		$("#backBtn").click(function(e) {
