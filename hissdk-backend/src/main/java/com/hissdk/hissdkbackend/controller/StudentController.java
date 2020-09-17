@@ -84,5 +84,10 @@ public class StudentController {
 		response.put("deleted", Boolean.TRUE);
 		return response;
 	}
+	
+	@GetMapping("/courses2/{subject}")
+	public List<Student> getStudentsByCourse(@PathVariable(value = "subject") String subject) {
+		return studentRepository.searchSubject(subject);
+	}
 }
 

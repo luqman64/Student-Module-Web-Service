@@ -4,34 +4,79 @@
     <meta charset="UTF-8">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>
-    jQuery.ajax({
-        url: "http://localhost:8081/api/backend/students",
-        type: "GET",
-        dataType: "json",
-        contentType: 'application/json; charset=utf-8',
-        success: function(resultData) {
-            //here is your json.
-              // process it
-              
-            var item =[];
-            $.each(resultData, function (key, val){
-                item.push("<tr>");
-                item.push("<td id=''"+key+"''>"+val.id+"</td>");
-                item.push("<td id=''"+key+"''>"+val.firstName+"</td>");
-                item.push("<td id=''"+key+"''>"+val.lastName+"</td>");
-                item.push("<td id=''"+key+"''>"+val.emailId+"</td>");
-                item.push("<td><button class=\'upd\' onclick=\"update(" + val.id + ")\">Update</button></td>");  
-                item.push("<td><button class=\'delete\' id=' "+val.id+" '>Delete</button></td>");
-               
-                item.push("</tr>");
-                });
-            $("<tbody/>",{html: item.join("")}).appendTo("table");
 
-        },
-        error : function(jqXHR, textStatus, errorThrown) {
-        },
+    $(function() {
+   	 jQuery.ajax({
+   	        url: "http://localhost:8081/api/backend/students",
+   	        type: "GET",
+   	        dataType: "json",
+   	        contentType: 'application/json; charset=utf-8',
+   	        success: function(resultData) {
+   	            //here is your json.
+   	              // process it
+   	              
+   	            var item =[];
+   	            $.each(resultData, function (key, val){
+   	                item.push("<tr>");
+   	                item.push("<td id=''"+key+"''>"+val.id+"</td>");
+   	                item.push("<td id=''"+key+"''>"+val.firstName+"</td>");
+   	                item.push("<td id=''"+key+"''>"+val.lastName+"</td>");
+   	                item.push("<td id=''"+key+"''>"+val.emailId+"</td>");
+   	                item.push("<td><button class=\'upd\' onclick=\"update(" + val.id + ")\">Update</button></td>");  
+   	                item.push("<td><button class=\'delete\' id=' "+val.id+" '>Delete</button></td>");
+   	               
+   	                item.push("</tr>");
+   	                });
+   	            $("<tbody/>",{html: item.join("")}).appendTo("table");
 
-        timeout: 120000,
+   	        },
+   	        error : function(jqXHR, textStatus, errorThrown) {
+   	        },
+
+   	        timeout: 120000,
+   	    });
+        
+    	$("#search").click(function(e) {
+			e.preventDefault();
+
+			var search = $("#sbj").val();
+			$("table > tbody > tr").remove();
+			var url2 = "http://localhost:8081/api/backend/courses2/" + search
+			if (search == "") {
+				url2 = "http://localhost:8081/api/backend/students";
+			}
+
+			jQuery.ajax({
+	   	        url: url2,
+	   	        type: "GET",
+	   	        dataType: "json",
+	   	        contentType: 'application/json; charset=utf-8',
+	   	        success: function(resultData) {
+	   	            //here is your json.
+	   	              // process it
+	   	              
+	   	            var item =[];
+	   	            $.each(resultData, function (key, val){
+	   	                item.push("<tr>");
+	   	                item.push("<td id=''"+key+"''>"+val.id+"</td>");
+	   	                item.push("<td id=''"+key+"''>"+val.firstName+"</td>");
+	   	                item.push("<td id=''"+key+"''>"+val.lastName+"</td>");
+	   	                item.push("<td id=''"+key+"''>"+val.emailId+"</td>");
+	   	                item.push("<td><button class=\'upd\' onclick=\"update(" + val.id + ")\">Update</button></td>");  
+	   	                item.push("<td><button class=\'delete\' id=' "+val.id+" '>Delete</button></td>");
+	   	               
+	   	                item.push("</tr>");
+	   	                });
+	   	            $("<tbody/>",{html: item.join("")}).appendTo("table");
+
+	   	        },
+	   	        error : function(jqXHR, textStatus, errorThrown) {
+	   	        },
+
+	   	        timeout: 120000,
+	   	    });
+			
+	   });
     });
   
     </script>
@@ -69,6 +114,8 @@
 </style>
 <body>
 	<h2>Student Module</h2>
+	<label for="sbj">Subject:</label>&nbsp;
+    <input type="text" id="sbj" name="sbj" placeholder="eg. math">&nbsp;&nbsp;<button id="search">Search</button><br><br>
 	<button id="addData">Add</button>
 	<br><br>
 
