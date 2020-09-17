@@ -30,7 +30,8 @@ CREATE TABLE `courses` (
 
 insert  into `courses`(`id`,`subject`) values 
 (34,'mathematics'),
-(64,'mathe');
+(64,'mathe'),
+(66,'biology');
 
 /*Table structure for table `hibernate_sequence` */
 
@@ -43,7 +44,7 @@ CREATE TABLE `hibernate_sequence` (
 /*Data for the table `hibernate_sequence` */
 
 insert  into `hibernate_sequence`(`next_val`) values 
-(66);
+(67);
 
 /*Table structure for table `students` */
 
@@ -63,7 +64,8 @@ insert  into `students`(`id`,`email_address`,`first_name`,`last_name`) values
 (29,'azm@yahoo.com','Majid','Azwan'),
 (33,'jw@gmail.com','Johnny','Way'),
 (34,'lwh@yahoo.com','Lee','Wang Hong'),
-(64,'rm@yahoo.com','Raju','Muthu');
+(64,'rm@yahoo.com','Raju','Muthu'),
+(66,'mhm23@yahoo.com','Masli','Hanifah');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
